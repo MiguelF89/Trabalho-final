@@ -1,17 +1,2 @@
-
-use App\Http\Controllers\InstituicaoController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
-
-// Rota padrão do Laravel (opcional)
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-// Rotas da sua API
-Route::apiResource('instituicoes', InstituicaoController::class);
-
-// Rota de teste
-Route::get('teste', function() {
-    return 'Rota funcionando!';
-});
+<label>CNPJ:</label>
+<input type="text" name="cnpj" class="form-control" required>
