@@ -1,2 +1,53 @@
-<label>CNPJ:</label>
-<input type="text" name="cnpj" class="form-control" required>
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-200 dark:from-gray-900 dark:to-gray-800">
+    <div class="w-full max-w-md bg-white dark:bg-gray-900 rounded-2xl shadow-lg p-8">
+        <h2 class="text-2xl font-semibold text-center mb-6 text-gray-800 dark:text-gray-100">
+            Bem-vindo de volta 👋
+        </h2>
+
+        <form wire:submit.prevent="login">
+            @csrf
+
+            <!-- Email -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">E-mail</label>
+                <input type="email" wire:model="email"
+                    class="w-full border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    required autofocus>
+                @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            </div>
+
+            <!-- Senha -->
+            <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Senha</label>
+                <input type="password" wire:model="password"
+                    class="w-full border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-200 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
+                    required>
+                @error('password') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            </div>
+
+            <!-- Lembrar -->
+            <div class="flex items-center justify-between mb-6">
+                <label class="flex items-center text-sm text-gray-600 dark:text-gray-400">
+                    <input type="checkbox" wire:model="remember" class="mr-2 rounded">
+                    Lembrar de mim
+                </label>
+                <a href="{{ route('password.request') }}" class="text-sm text-indigo-600 dark:text-indigo-400 hover:underline">
+                    Esqueci a senha
+                </a>
+            </div>
+
+            <!-- Botão -->
+            <button type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 rounded-lg transition">
+                Entrar
+            </button>
+        </form>
+
+        <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">
+            Não tem uma conta?
+            <a href="{{ route('register') }}" class="text-indigo-600 dark:text-indigo-400 hover:underline">
+                Cadastre-se
+            </a>
+        </p>
+    </div>
+</div>
