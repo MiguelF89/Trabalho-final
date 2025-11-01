@@ -8,17 +8,16 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('instituicoes', function (Blueprint $table) {
-            $table->id();
+        Schema::create('produtos', function (Blueprint $table) {
+            $table->id(); // BIGINT UNSIGNED
             $table->string('nome');
-            $table->string('contato');
-            $table->string('cnpj')->unique();
+            $table->decimal('preco', 10, 2);
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('instituicoes');
+        Schema::dropIfExists('produtos');
     }
 };
