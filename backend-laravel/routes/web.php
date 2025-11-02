@@ -4,22 +4,29 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InstituicaoController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\VendaController;
+use App\Http\Controllers\DashboardController;
 
+// Rota Home
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::view('dashboard', 'dashboard')
+// Dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+// Profile
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
+// Rotas de autenticação (login, register, etc.)
 require __DIR__.'/auth.php';
 
+// Rotas protegidas (apenas usuários autenticados)
 Route::middleware(['auth'])->group(function () {
+
     // Rotas Instituições
     Route::get('instituicoes', [InstituicaoController::class, 'index'])->name('instituicoes.index');
     Route::get('instituicoes/create', [InstituicaoController::class, 'create'])->name('instituicoes.create');
