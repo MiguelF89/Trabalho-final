@@ -48,17 +48,7 @@
                         </div>
                     </div>
                 @else
-                    <a href="{{ route('login') }}"
-                        class="rounded-md px-3 py-2 text-black dark:text-white hover:text-black/70 dark:hover:text-white/80">
-                        Entrar
-                    </a>
 
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}"
-                            class="rounded-md px-3 py-2 text-black dark:text-white hover:text-black/70 dark:hover:text-white/80">
-                            Registrar
-                        </a>
-                    @endif
                 @endauth
             </nav>
         </div>
